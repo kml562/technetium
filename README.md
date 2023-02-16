@@ -167,36 +167,52 @@ Refer below sample
 ## users
 ```yaml
 {
-  _id: ObjectId("88abc190ef0288abc190ef02"),
-  title: "Mr",
-  name: "John Doe",
-  phone: 9897969594,
-  email: "johndoe@mailinator.com", 
-  password: "abcd1234567",
-  address: {
-    street: "110, Ridhi Sidhi Tower",
-    city: "Jaipur",
-    pincode: "400001"
-  },
-  "createdAt": "2021-09-17T04:25:07.803Z",
-  "updatedAt": "2021-09-17T04:25:07.803Z",
+  status: true,
+  data: {
+          _id: ObjectId("88abc190ef0288abc190ef02"),
+          title: "Mr",
+          name: "John Doe",
+          phone: 9897969594,
+          email: "johndoe@mailinator.com", 
+          password: "abcd1234567",
+          address: {
+            street: "110, Ridhi Sidhi Tower",
+            city: "Jaipur",
+            pincode: "400001"
+                   },
+          "createdAt": "2021-09-17T04:25:07.803Z",
+          "updatedAt": "2021-09-17T04:25:07.803Z",
+         }
+}
+```
+### Successful Login Response structure
+```yaml
+{
+  status: true,
+  data: {
+   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjYyZmUzYmUzMzY2ZmFkNDZjY2Q1MzI3ZiIsImlhdCI6MTY2MDgzMDA4MywiZXhwIjoxNjYwODY2MDgzfQ.mSo-TLyRlGhMNcy4ftEvvIlCHlyEqpaFZc-iBth4lfg"
+
+  }
 }
 ```
 ### books
 ```yaml
 {
-  "_id": ObjectId("88abc190ef0288abc190ef55"),
-  "title": "How to win friends and influence people",
-  "excerpt": "book body",
-  "userId": ObjectId("88abc190ef0288abc190ef02"),
-  "ISBN": "978-0008391331",
-  "category": "Book",
-  "subcategory": "Non fiction",
-  "isDeleted": false,
-  "reviews": 0,
-  "releasedAt": "2021-09-17"
-  "createdAt": "2021-09-17T04:25:07.803Z",
-  "updatedAt": "2021-09-17T04:25:07.803Z",
+  status: true,
+  data:{
+        "_id": ObjectId("88abc190ef0288abc190ef55"),
+        "title": "How to win friends and influence people",
+        "excerpt": "book body",
+        "userId": ObjectId("88abc190ef0288abc190ef02"),
+        "ISBN": "978-0008391331",
+        "category": "Book",
+        "subcategory": "Non fiction",
+        "isDeleted": false,
+        "reviews": 0,
+        "releasedAt": "2021-09-17"
+        "createdAt": "2021-09-17T04:25:07.803Z",
+        "updatedAt": "2021-09-17T04:25:07.803Z",
+      }
 }
 ```
 
@@ -315,5 +331,46 @@ Refer below sample
     "updatedAt": "2021-09-17T04:25:07.803Z",
     "reviewsData": []
   }
+}
+```
+### Delete Response Structure
+```yaml
+{
+  status: true,
+  message: ""
+}
+```
+### Review Response Structure
+```yaml
+{
+    "status": true,
+    "message": "Review added successfully",
+    "data": {
+        "reviews": 2,
+        "isDeleted": false,
+        "_id": "63ede089c7c6ef5f68ca5360",
+        "title": "Wings of Fire 8347",
+        "excerpt": "Free will",
+        "userId": "63ede081c7c6ef5f68ca5356",
+        "ISBN": "1001078",
+        "category": "Science",
+        "subcategory": "Life Science",
+        "releasedAt": "1990-12-20T00:00:00.000Z",
+        "createdAt": "2023-02-16T07:51:37.348Z",
+        "updatedAt": "2023-02-16T07:51:47.075Z",
+        "__v": 0,
+        "reviewsData": {
+            "reviewedBy": "Jack",
+            "isDeleted": false,
+            "_id": "63ede093c7c6ef5f68ca5367",
+            "bookId": "63ede089c7c6ef5f68ca5360",
+            "rating": 3,
+            "review": "very good",
+            "reviewedAt": "2023-02-16T07:51:47.029Z",
+            "createdAt": "2023-02-16T07:51:47.031Z",
+            "updatedAt": "2023-02-16T07:51:47.031Z",
+            "__v": 0
+        }
+    }
 }
 ```
