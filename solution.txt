@@ -1,0 +1,23 @@
+Download FunctionUp Technetium project
+Create a branch named assignment/git
+Create a new text file called solution.txt
+In this file answer the following: Q. What is the difference between git restore filename and
+ git restore --staged filename?
+Push this branch to your personal project (that you created after signing up at Github)
+Make sure finally that the branch is visible in your own account and that it contains solution.txt file
+ containing the answer.
+Note
+
+
+answer 1-- git restore basically use for undo your last commit and its give you the data form previous commits,
+it will be  revert the file back to its previous state,;
+
+git restore --staged filename=== if you do some modification in your files and commit them but you realsize,
+there are some bugs in your file so you don't wanna push it and you want to work in bugs so you just do git restore 
+-- staged filename , it will remove that file from staging area and the modification will be the same in your
+local system it would be present,.
+
+
+This would remove the "example.txt" file from the staging area, so that any changes you make to the file would 
+not be included in the next commit. However, any modifications you made to the file itself would still be present,
+ so you could continue working on the file and make further changes before committing.
