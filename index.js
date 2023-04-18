@@ -13,3 +13,4 @@ for(let i=0;i<arr.length;i++){
     }
 }
 console.log(m1+m2)
+// maximum sum of the number;
