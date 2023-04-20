@@ -2,7 +2,7 @@ const express = require('express');
 // const { route } = require('express/lib/application');
 const router = express.Router();
 const commonFile = require('./common')
-const {welcome}= require("../logger/logger")
+const {welcome}= require("../logger/logger.js")
 const { getBatchInfo,printDate,printMonth}= require("../util/helper.js")
 const prb3= require("../validator/formatter.js")
 
@@ -14,10 +14,11 @@ const lodash = require('lodash');
 router.get('/test-me', function (req, res) {
     res.send(`This should be working wit xyz!,data: ${getBatchInfo()}`)
     // console.log('the looger file data=',welcome())
+    welcome()
     console.log(getBatchInfo());
     console.log("date&,month",printDate(),printMonth());
    prb3()
-    welcome()
+    
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
  'September', 'October', 'November', 'December'];
  let newarr= lodash.chunk(months,3)

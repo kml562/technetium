@@ -3,22 +3,24 @@
 //Californium, W3D4, the topic for today is Nodejs module system’
 
 // Call all these functions in route.js inside the test-me route handler
-
+let date= new Date();
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+ 'September', 'October', 'November', 'December'];
 const printDate = () => {
-  let date = new Date();
+
   let day = date.getDate();
   return day;
 };
 
 function printMonth() {
-  const date = new Date();
-  const month = date.getMonth() + 1;
-  return month;
+
+  const month = date.getMonth() ;
+  return months[month];
 }
 
 function getBatchInfo() {
   return `Technetium, Name:Kamal Bisht ,today Date: ${printDate()},Month: ${printMonth()}, and today they taught us about node modules,
-   routes and prots , how to install modules how to use modules 
+  week4, routes and prots , how to install modules how to use modules 
     `;
 }
   module.exports = { getBatchInfo,printDate,printMonth};
