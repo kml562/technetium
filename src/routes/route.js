@@ -1,52 +1,42 @@
 const express = require('express');
 const { route } = require('express/lib/application');
 const router = express.Router();
-const commonFile = require('./common')
-const myUnderscore = require('underscore')
 
-router.get('/test-me', function (req, res) {
-    res.send('This should be working!')
+const {array,objarr}=require("../data/data.js")
+const {list,find}=require('../module/list.js');
+const {findel}= require('../module/filter.js');
+router.get('/movies', function(req, res) {
+ 
+    console.log(list(array()))
+res.send(list(array()))
 });
+// id is basically a index of array if the index of element exists then it wii return the element if is it not then 
+// retun the  id number 0 to last index;
+router.get('/movies/:id', function(req, res) {
 
-router.get('/test-you', function (req, res) {
-    console.log('The exported module is: ',commonFile)
-    commonFile.doSomething()
-    console.log('This is the constant I created', commonFile.name)
-    res.send('Hello there, welcome to this application!')
-});
-
-router.get('/test-underscore', function(req, res){
-    let result = myUnderscore.first([11,12,23,44,15], 4)
-    console.log('the result is',result)
-    res.send('done')
+console.log(req.params.id)
+res.send(find(array(),req.params.id))
 })
 
-router.get('/cohorts', function (request, response){
-    // logic to get the cohorts from database
-    // logic tp get only the active cohorts
-    // logic to get only the cohort with a size than 50
-    // logic to get only the backend cohorts
-    response.send(['technetium','nobelium'])
+//Write another api called GET /films. Instead of an array of strings define an array of movie objects this time.
+// Each movie object should have attributes - id and name. An example of movies array is objarray, 
+//Return the entire array in this api’s response
+
+router.get('/films', function(req, res) {
+res.send(objarr())
+console.log("hello world")
 })
 
-router.get('/students', function(req, res){
-    // receive or access the query params in the code
-    // write a logic on these query params
-    // city, score
-    console.log(req.query)
-    let requestedCity = req.query.city
-    let sortField = req.query.sort
-    // logic to get students
-    res.send(["Sabiha","Neha","Akash","Sonali"])
-})
+/*
+Write api GET /films/:filmId where filmId is the value received in request path params. Use this value to 
+return a movie object with this id. In case there is no such movie present in the array, return a suitable
+ message in the response body. Example for a request GET /films/3 should return the movie object 
+/*/
 
-router.get('/students/:studentName', function(req, res) {
-    console.log(req.params.studentName)
-    /// go to database and search for studentName student
-    // store the data found in this variable - studentDetails
-    //res.send({data: studentDetails})
-    res.send('student data')
-})
+router.get('/films/:filmID', function (req, res) {
 
+res.send(findel(objarr(),req.params.filmID));
+
+})
 
 module.exports = router;
