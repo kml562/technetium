@@ -15,26 +15,20 @@ let persons= [{name: "PK",age: 10, votingStatus: false},{name: "SK",age: 20,voti
 
 
 router.post("/query",function(req,res){
-let = req.query;
-console.log(data)
-
-
-})
-
-
-//filter out all the numbers that are greater than "input" ( input is received from query params)
-let myArr = [23, 45, 67, 281394, 32424, 423, 24, 42323, 4, 234, 12, 34]
-
-router.post( "/post-query-2", function (req, res){
-    let input= req.query.input
-
-    // let finArr= myArr.filter ( ele => ele>input )
-    let finalArr= []
-    for( i=0 ; i<myArr.length ; i++){
-        if ( myArr[i] > input )     finalArr.push( myArr[i])
+let qur = req.query.votingage;
+let val= persons.reduce((acc,curr)=>{
+    let {age}=curr;
+    if(age>=qur){
+      curr={...curr,votingStatus:true}
+       acc.push(curr);
     }
-    res.send( {data: finalArr , status: true})
+    return acc;
+   },[])
+res.send({data:val,status:true});
+
 })
+
+
 
 
 module.exports = router;
