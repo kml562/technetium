@@ -9,16 +9,17 @@ const router = express.Router();
 // WRITE A POST API TO THE ABOVE
 //take this as sample for array of persons:
 
-let persons= [{name: "PK",age: 10, votingStatus: false},{name: "SK",age: 20,votingStatus: false
-},{name: "AA",age: 70,votingStatus: false},{name: "SC",age: 5, votingStatus: false
-},{ name: "HO",age: 40,votingStatus: false}]
+let persons= [{name: "PK",age: 10, votingStatus: false},{name: "SK",age: 20,votingStatus: false},
+{name: "AA",age: 70,votingStatus: false},{name: "SC",age: 5, votingStatus: false
+},
+{ name: "HO",age: 40,votingStatus: false}]
 
 
 router.post("/query",function(req,res){
 let qur = req.query.votingage;
 let val= persons.reduce((acc,curr)=>{
     let {age}=curr;
-    if(age>=qur){
+    if(age>qur){
       curr={...curr,votingStatus:true}
        acc.push(curr);
     }
