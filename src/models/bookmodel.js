@@ -22,7 +22,8 @@ const bookSchema= new mongoose.Schema({
         indianPrice: String,
         europePrice: String,
     },
-    sales: {type: Number, default: 10}
+    year: "string",
+    sales: {type: Number}
 },{timestamps: true }
 
 )
