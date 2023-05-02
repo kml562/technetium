@@ -14,7 +14,7 @@ const list = async (req, res) => {
       author_id: 1,
       _id: 0,
     });
-    res.send(lists);
+    res.send({data:lists});
   } catch (error) {
     console.log(error);
   }
