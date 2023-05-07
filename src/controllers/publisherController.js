@@ -7,24 +7,27 @@ const createPublisher = async (req, res) => {
   res.json({ data: dataa });
 };
 
-// For the books written by authors having a rating greater than 3.5, update the books price by 10
-//(For eg if old price for such a book is 50, new will be 60)
 const putdata = async (req, res) => {
   try {
-    let name = req.params;
-    let schema = req.body;
-    let update = await PublisherModel.findOneAndUpdate(name, schema, {
-      new: true,
-    });
 
-    let updatePrice = await bookmode.updateMany(
-      { rating: { $gt: 3.5 } },
-      { $inc: { price: 10 } },
-      { new: true }
-    );
-    res.send({ data: update, updatePrice: updatePrice });
+    let updateval = await bookmode.updateMany(
+      {publisher: {$in:["6450ee3da78462b15437fb83","6450f956c544383bbc01e475"]}},
+      {isHardCover:true},
+         {new:true});
+         
+         let updatePrices = await bookmode.find()
+        .populate("author_id", "rating") // Populate author document and include only rating field
+        .where("author_id.rating") // Filter books where author's rating is greater than 3.5
+        .updateMany(
+          { rating: { $gt: 3.5 } },
+          { $inc: { price: 10 } },
+          {new:true}); // Increment price by 10 for all matching books
+      
+    
+    res.send({ data: updateval,price:updatePrices });
   } catch (err) {
-    res.json({ error: err });
+console.log(err);
+    res.send({ error: err.message });
   }
 };
 
