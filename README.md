@@ -1,10 +1,9 @@
-# Uranium
+# Technetium
 
 ## Project - Books Management
 
 ### Key points
-- Create a group database `groupXDatabase`. You can clean the db you previously used and resue that.
-- This time each group should have a *single git branch*. Coordinate amongst yourselves by ensuring every next person pulls the code last pushed by a team mate. You branch will be checked as part of the demo. Branch name should follow the naming convention `project/booksManagementGroupX`
+-  Branch name should follow the naming convention `project/booksManagement`
 - Follow the naming conventions exactly as instructed.
 
 ### Models
@@ -34,7 +33,7 @@
   userId: {ObjectId, mandatory, refs to user model},
   ISBN: {string, mandatory, unique},
   category: {string, mandatory},
-  subcategory: [string, mandatory],
+  subcategory: {string, mandatory},
   reviews: {number, default: 0, comment: Holds number of reviews of this book},
   deletedAt: {Date, when the document is deleted}, 
   isDeleted: {boolean, default: false},
