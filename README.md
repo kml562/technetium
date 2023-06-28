@@ -1,4 +1,4 @@
-#Uranium
+#Technetium
 ## Project - Products Management
 
 ### Key points
